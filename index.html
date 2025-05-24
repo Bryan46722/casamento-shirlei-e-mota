@@ -1189,6 +1189,7 @@
             <!-- Fotos da história com efeitos -->
             <div class="story-photos">
 
+              
               <div class="story-photo" id="photo2">
                 <img src="images/foto4.png.jpg" alt="Nosso Momento Especial - Juntos em Nova York" />
               </div>
@@ -1670,7 +1671,8 @@
         const whatsappNumber = '12392462144'; // Número dos EUA: +1 + 12392462144
         const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
         
-        window.open(whatsappUrl, '_blank');
+        // Usar window.location.href para melhor compatibilidade mobile
+        window.location.href = whatsappUrl;
       }, 2000);
     }
   </script>
