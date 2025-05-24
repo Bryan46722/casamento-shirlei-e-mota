@@ -1,0 +1,1680 @@
+<script>
+    // Definição da função goToStep
+    function goToStep(step) {
+      // Esconder todas as etapas
+      document.querySelectorAll('.page-content > section').forEach(section => {
+        section.style.display = 'none';
+      });
+      
+      // Mostrar a etapa selecionada
+      document.getElementById(`step${step}`).style.display = 'block';
+      
+      // Atualizar os pontos de navegação
+      document.querySelectorAll('.step-dot').forEach(dot => {
+        dot.classList.remove('active');
+      });
+      document.getElementById(`dot-${step}`).classList.add('active');
+      
+      // Rolar para o topo da seção
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+    
+    // Resto do seu código...
+  </script>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shirlei & Motta - Nosso Casamento</title>
+  <!-- Fontes -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Great+Vibes&family=Dancing+Script:wght@400;500;600;700&family=Allura&family=Alex+Brush&family=Satisfy&display=swap" rel="stylesheet">
+  <!-- Ícones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Estilos de bibliotecas -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  
+  <style>
+    :root {
+      /* Paleta sofisticada refinada */
+      --color-primary: #791e1e;
+      --color-primary-light: #9e3636;
+      --color-primary-dark: #5a1616;
+      --color-secondary: #d4af37; /* Dourado elegante */
+      --color-secondary-light: #e8cb75;
+      --color-secondary-dark: #b28e1d;
+      --color-accent: #2c3e50;
+      --color-accent-light: #4a6b8a;
+      --color-background: #faf7f2;
+      --color-background-alt: #f3ede3;
+      --color-text: #2c3e50;
+      --color-text-light: #6c7a89;
+      --color-white: #ffffff;
+      --color-black: #1a1a1a;
+      --color-error: #d64541;
+      --color-success: #2ecc71;
+      
+      /* Tipografia refinada */
+      --font-primary: 'Cormorant Garamond', serif;
+      --font-secondary: 'Montserrat', sans-serif;
+      --font-script: 'Pinyon Script', cursive;
+      --font-display: 'Playfair Display', serif;
+      
+      /* Espaçamentos elegantes */
+      --spacing-xs: 4px;
+      --spacing-sm: 8px;
+      --spacing-md: 16px;
+      --spacing-lg: 24px;
+      --spacing-xl: 32px;
+      --spacing-xxl: 48px;
+      --spacing-xxxl: 64px;
+      
+      /* Bordas e sombras */
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 20px;
+      --radius-xl: 30px;
+      --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.07);
+      --shadow-lg: 0 15px 35px rgba(0, 0, 0, 0.1);
+      --shadow-xl: 0 20px 50px rgba(0, 0, 0, 0.12);
+      
+      /* Transições */
+      --transition-fast: 0.3s ease;
+      --transition-medium: 0.5s ease;
+      --transition-slow: 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+      --transition-bounce: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: var(--font-secondary);
+      background-color: var(--color-background);
+      color: var(--color-text);
+      line-height: 1.8;
+      overflow-x: hidden;
+      opacity: 0;
+      animation: fadeIn 1s ease-out forwards 0.5s;
+    }
+    
+    /* Animações Globais */
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+    
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes scaleIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    
+    @keyframes floatAnimation {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    @keyframes flipDigit {
+      0% { transform: rotateX(0); }
+      50% { transform: rotateX(90deg); }
+      100% { transform: rotateX(0); }
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(121, 30, 30, 0.4); }
+      70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(121, 30, 30, 0); }
+      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(121, 30, 30, 0); }
+    }
+    
+    @keyframes borderShine {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    @keyframes shimmer {
+      0% { background-position: -100% 0; }
+      100% { background-position: 100% 0; }
+    }
+    
+    @keyframes heartbeat {
+      0% { transform: scale(1); }
+      25% { transform: scale(1.1); }
+      40% { transform: scale(1); }
+      60% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    
+    /* Tipografia */
+    h1, h2, h3, h4, h5 {
+      font-family: var(--font-primary);
+      font-weight: 400;
+      line-height: 1.3;
+      margin-bottom: var(--spacing-lg);
+      text-align: center;
+    }
+    
+    h1 {
+      font-size: 3rem;
+      letter-spacing: 1px;
+    }
+    
+    h2 {
+      font-size: 2.5rem;
+      position: relative;
+      display: inline-block;
+    }
+    
+    h2::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: -10px;
+      width: 80px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--color-primary-light), var(--color-primary), var(--color-primary-dark));
+      transform: translateX(-50%);
+    }
+    
+    h3 {
+      font-size: 2rem;
+    }
+    
+    h4 {
+      font-size: 1.5rem;
+      margin-bottom: var(--spacing-md);
+    }
+    
+    p {
+      margin-bottom: var(--spacing-md);
+      font-size: 1.05rem;
+      color: var(--color-text-light);
+      text-align: center;
+    }
+    
+    /* Layout */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--spacing-xl);
+      position: relative;
+      z-index: 1;
+    }
+    
+    .section {
+      padding: var(--spacing-xxxl) 0;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .text-center {
+      text-align: center;
+    }
+    
+    /* Elementos decorativos */
+    .decorative-line {
+      width: 120px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--color-secondary), transparent);
+      margin: var(--spacing-md) auto;
+    }
+    
+    .elegant-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: var(--spacing-xxl) 0;
+    }
+    
+    .elegant-divider::before,
+    .elegant-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--color-secondary), transparent);
+      opacity: 0.6;
+    }
+    
+    .elegant-divider i {
+      color: var(--color-secondary);
+      padding: 0 var(--spacing-md);
+      font-size: 1.2rem;
+      transition: transform var(--transition-fast);
+    }
+    
+    .elegant-divider:hover i {
+      animation: heartbeat 1.5s ease infinite;
+    }
+    
+    .section-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    
+    .section-background .bg-graphic {
+      position: absolute;
+      opacity: 0.05;
+    }
+    
+    .bg-graphic.floral-1 {
+      top: -50px;
+      right: -50px;
+      width: 300px;
+      height: 300px;
+      background: url('https://i.imgur.com/kRXvCN0.png') no-repeat center/contain;
+    }
+    
+    .bg-graphic.floral-2 {
+      bottom: -100px;
+      left: -70px;
+      width: 350px;
+      height: 350px;
+      background: url('https://i.imgur.com/BZfHRbL.png') no-repeat center/contain;
+    }
+    
+    .bg-graphic.rings {
+      top: 50%;
+      left: 50%;
+      width: 200px;
+      height: 200px;
+      background: url('https://i.imgur.com/3tzUcbW.png') no-repeat center/contain;
+      transform: translate(-50%, -50%);
+    }
+    
+    /* Hero Section / Introdução */
+    .hero-section {
+      height: 100vh;
+      min-height: 700px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      text-align: center;
+      overflow: hidden;
+      padding: 0 var(--spacing-xl);
+      background: url('images/fundo.png.png') center/cover no-repeat fixed;
+    }
+    
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.8));
+      z-index: 1;
+      backdrop-filter: blur(1px);
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+    }
+    
+    .hero-particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+    
+    .monogram {
+      font-family: 'Great Vibes', cursive;
+      font-size: 5.5rem;
+      color: var(--color-primary);
+      line-height: 1;
+      margin-bottom: var(--spacing-md);
+      opacity: 0;
+      animation: fadeUp 1.2s ease-out forwards 0.8s;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+      font-weight: 400;
+    }
+    
+    .monogram::after {
+      content: '♥';
+      font-size: 2rem;
+      vertical-align: super;
+      position: relative;
+      color: var(--color-primary);
+      top: -10px;
+      animation: heartbeat 1.5s ease infinite;
+    }
+    
+    .headline {
+      font-size: 1.3rem;
+      opacity: 0;
+      margin-bottom: var(--spacing-xl);
+      font-family: var(--font-primary);
+      letter-spacing: 1px;
+      animation: fadeUp 1.2s ease-out forwards 1s;
+    }
+    
+    .date-badge {
+      display: inline-block;
+      padding: var(--spacing-md) var(--spacing-xl);
+      background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+      color: var(--color-white);
+      border-radius: 50px;
+      font-family: var(--font-primary);
+      font-size: 1.2rem;
+      margin-top: var(--spacing-lg);
+      box-shadow: var(--shadow-md);
+      opacity: 0;
+      animation: fadeUp 1.2s ease-out forwards 1.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .date-badge::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, 
+                   transparent, 
+                   rgba(255, 255, 255, 0.2), 
+                   transparent);
+      animation: shimmer 3s infinite;
+    }
+    
+    /* Step Indicator */
+    .step-indicator {
+      display: flex;
+      justify-content: center;
+      padding: var(--spacing-lg) 0;
+      gap: var(--spacing-xl);
+      margin-top: -30px;
+      position: relative;
+      z-index: 10;
+    }
+    
+    .step-dot {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background-color: var(--color-white);
+      border: 1px solid var(--color-primary);
+      cursor: pointer;
+      transition: all var(--transition-medium);
+      position: relative;
+    }
+    
+    .step-dot::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: 100%;
+      width: var(--spacing-xxl);
+      height: 1px;
+      background-color: var(--color-primary);
+      opacity: 0.3;
+      transform: translateY(-50%);
+    }
+    
+    .step-dot:first-child::before {
+      display: none;
+    }
+    
+    .step-dot.active {
+      background-color: var(--color-primary);
+      transform: scale(1.3);
+      box-shadow: 0 0 0 5px rgba(121, 30, 30, 0.2);
+    }
+    
+    /* Elementos de UI */
+    .elegant-card {
+      background: var(--color-white);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      padding: var(--spacing-xxl);
+      position: relative;
+      overflow: hidden;
+      margin-bottom: var(--spacing-xl);
+      transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    
+    .elegant-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .elegant-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, var(--color-primary), var(--color-secondary), var(--color-primary));
+      background-size: 200% 100%;
+      animation: borderShine 3s ease infinite;
+    }
+    
+    .elegant-card::after {
+      content: '';
+      position: absolute;
+      top: 5px;
+      left: 0;
+      width: 100%;
+      height: 15px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3), transparent);
+    }
+    
+    .card-icon {
+      position: absolute;
+      top: var(--spacing-md);
+      right: var(--spacing-md);
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-primary);
+      opacity: 0.3;
+      font-size: 1.5rem;
+    }
+    
+    .btn {
+      padding: 14px 32px;
+      border-radius: 50px;
+      border: none;
+      font-family: var(--font-secondary);
+      font-weight: 500;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      position: relative;
+      overflow: hidden;
+      display: inline-block;
+      text-decoration: none;
+      text-align: center;
+      z-index: 1;
+      margin: var(--spacing-sm);
+      min-width: 160px;
+    }
+    
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, 
+                   transparent, 
+                   rgba(255, 255, 255, 0.2), 
+                   transparent);
+      transition: all var(--transition-fast);
+      z-index: -1;
+    }
+    
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 7px 14px rgba(0, 0, 0, 0.1);
+    }
+    
+    .btn:hover::before {
+      left: 100%;
+      transition: 0.7s;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(45deg, var(--color-primary), var(--color-primary-dark));
+      color: var(--color-white);
+      box-shadow: 0 4px 15px rgba(121, 30, 30, 0.2);
+    }
+    
+    .btn-primary:hover {
+      background: linear-gradient(45deg, var(--color-primary-dark), var(--color-primary));
+      box-shadow: 0 7px 20px rgba(121, 30, 30, 0.3);
+    }
+    
+    .btn-secondary {
+      background: linear-gradient(45deg, var(--color-secondary), var(--color-secondary-dark));
+      color: var(--color-text);
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+    }
+    
+    .btn-secondary:hover {
+      background: linear-gradient(45deg, var(--color-secondary-dark), var(--color-secondary));
+      box-shadow: 0 7px 20px rgba(212, 175, 55, 0.3);
+    }
+    
+    .btn-outline {
+      background-color: transparent;
+      color: var(--color-primary);
+      border: 2px solid var(--color-primary);
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+    }
+    
+    .btn-outline::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      background: var(--color-primary);
+      transition: all 0.3s ease-in-out;
+      z-index: -1;
+    }
+    
+    .btn-outline:hover {
+      color: var(--color-white);
+    }
+    
+    .btn-outline:hover::after {
+      width: 100%;
+    }
+    
+    .btn-map {
+      background: linear-gradient(45deg, var(--color-accent), var(--color-accent-light));
+      color: var(--color-white);
+      box-shadow: 0 4px 15px rgba(44, 62, 80, 0.2);
+    }
+    
+    .btn-map:hover {
+      background: linear-gradient(45deg, var(--color-accent-light), var(--color-accent));
+      box-shadow: 0 7px 20px rgba(44, 62, 80, 0.3);
+    }
+    
+    .btn-icon {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+    }
+    
+    .btn-icon i {
+      transition: transform var(--transition-fast);
+    }
+    
+    .btn-icon:hover i {
+      transform: translateX(4px);
+    }
+    
+    /* Contador regressivo */
+    .cinematic-countdown {
+      padding: var(--spacing-xl);
+      text-align: center;
+      position: relative;
+      margin: var(--spacing-xl) 0;
+    }
+    
+    .countdown-digits {
+      display: flex;
+      justify-content: center;
+      gap: var(--spacing-lg);
+      margin-top: var(--spacing-xl);
+    }
+    
+    .digit-card {
+      background: var(--color-white);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-md);
+      width: 110px;
+      height: 140px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    
+    .digit-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+    }
+    
+    .digit-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 40px;
+      background: linear-gradient(to top, rgba(0,0,0,0.03), transparent);
+    }
+    
+    .digit {
+      font-family: var(--font-primary);
+      font-size: 3.5rem;
+      background: linear-gradient(45deg, var(--color-primary), var(--color-primary-dark));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      transition: transform var(--transition-fast);
+      font-weight: 700;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .digit.flip {
+      animation: flipDigit 0.6s;
+    }
+    
+    .digit-card span {
+      font-size: 0.9rem;
+      color: var(--color-text-light);
+      margin-top: var(--spacing-xs);
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      position: relative;
+      z-index: 1;
+    }
+    
+    /* Galeria de fotos */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-top: 30px;
+    }
+    
+    .photo-item {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      height: 240px;
+    }
+    
+    .photo-item:hover {
+      transform: translateY(-5px);
+    }
+    
+    .photo-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .photo-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+      color: white;
+      text-align: left;
+    }
+    
+    .photo-caption h4 {
+      margin: 0 0 5px 0;
+      font-size: 1.1rem;
+      text-align: left;
+    }
+    
+    .photo-caption p {
+      margin: 0;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.8);
+      text-align: left;
+    }
+
+    /* Estilos para a história do casal */
+    .story-content {
+      display: none;
+      margin-top: 30px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s ease;
+    }
+
+    .story-content.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .story-text {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--color-text);
+      text-align: left;
+      padding: 30px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(250,247,242,0.9));
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      border: 1px solid rgba(121, 30, 30, 0.1);
+      margin-bottom: 30px;
+      backdrop-filter: blur(10px);
+    }
+
+    .story-text p {
+      margin-bottom: 15px;
+      text-align: left;
+      opacity: 0;
+      transform: translateX(-20px);
+      animation: fadeInLeft 0.6s ease forwards;
+    }
+
+    .story-text p:nth-child(1) { animation-delay: 0.1s; }
+    .story-text p:nth-child(2) { animation-delay: 0.2s; }
+    .story-text p:nth-child(3) { animation-delay: 0.3s; }
+    .story-text p:nth-child(4) { animation-delay: 0.4s; }
+    .story-text p:nth-child(5) { animation-delay: 0.5s; }
+    .story-text p:nth-child(6) { animation-delay: 0.6s; }
+    .story-text p:nth-child(7) { animation-delay: 0.7s; }
+    .story-text p:nth-child(8) { animation-delay: 0.8s; }
+    .story-text p:nth-child(9) { animation-delay: 0.9s; }
+    .story-text p:nth-child(10) { animation-delay: 1.0s; }
+    .story-text p:nth-child(11) { animation-delay: 1.1s; }
+    .story-text p:nth-child(12) { animation-delay: 1.2s; }
+    .story-text p:nth-child(13) { animation-delay: 1.3s; }
+    .story-text p:nth-child(14) { animation-delay: 1.4s; }
+    .story-text p:nth-child(15) { animation-delay: 1.5s; }
+
+    @keyframes fadeInLeft {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .story-text p:first-child {
+      font-weight: bold;
+      color: var(--color-primary);
+      text-align: center;
+      font-size: 1.3rem;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid rgba(121, 30, 30, 0.2);
+    }
+
+    .story-text p:last-child {
+      font-style: italic;
+      color: var(--color-primary-dark);
+      text-align: center;
+      font-size: 1.1rem;
+      margin-top: 25px;
+      padding-top: 20px;
+      border-top: 2px solid rgba(121, 30, 30, 0.2);
+      font-weight: 500;
+    }
+
+    /* Estilos para as fotos da história */
+    .story-photos {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .story-photo {
+      position: relative;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+      transform: scale(0.9);
+      opacity: 0;
+      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .story-photo.show {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    .story-photo:nth-child(1) { transition-delay: 1.8s; }
+    .story-photo:nth-child(2) { transition-delay: 2.0s; }
+
+    .story-photo img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .story-photo:hover img {
+      transform: scale(1.05);
+    }
+
+    .story-photo::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, rgba(121, 30, 30, 0.1), rgba(212, 175, 55, 0.1));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 1;
+    }
+
+    .story-photo:hover::before {
+      opacity: 1;
+    }
+    
+    /* Cronograma */
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px 0;
+    }
+    
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50px;
+      width: 2px;
+      height: 100%;
+      background: var(--color-primary);
+    }
+    
+    .timeline-item {
+      position: relative;
+      margin-bottom: 40px;
+      padding-left: 100px;
+    }
+    
+    .timeline-dot {
+      position: absolute;
+      left: 50px;
+      width: 16px;
+      height: 16px;
+      background: var(--color-primary);
+      border-radius: 50%;
+      transform: translateX(-50%);
+      top: 24px;
+    }
+    
+    .timeline-content {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: var(--shadow-md);
+    }
+    
+    .timeline-time {
+      font-weight: bold;
+      color: var(--color-primary);
+      margin-bottom: 5px;
+    }
+    
+    .timeline-content h4, .timeline-content p {
+      text-align: left;
+    }
+    
+    /* Footer */
+    .footer {
+      background-color: var(--color-accent);
+      color: white;
+      padding: 60px 0 30px;
+      text-align: center;
+    }
+    
+    .footer-monogram {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+    
+    .footer-text {
+      max-width: 600px;
+      margin: 0 auto 20px;
+      color: rgba(255, 255, 255, 0.8);
+    }
+    
+    .footer-divider {
+      width: 80px;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.3);
+      margin: 30px auto;
+    }
+    
+    .copyright {
+      margin-top: 40px;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.5);
+    }
+    
+    /* Responsividade */
+    @media (max-width: 768px) {
+      .countdown-digits {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        max-width: 300px;
+        margin: 20px auto;
+      }
+      
+      .digit-card {
+        width: 100%;
+        height: auto;
+        padding: 10px 0;
+        min-height: 90px;
+      }
+      
+      .digit {
+        font-size: 2.5rem;
+      }
+      
+      .digit-card span {
+        font-size: 0.8rem;
+      }
+    }
+
+    @media (max-width: 350px) {
+      .countdown-digits {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+      
+      .digit-card {
+        min-height: 80px;
+        padding: 8px 0;
+      }
+      
+      .digit {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-overlay"></div>
+    <div id="hero-particles" class="hero-particles"></div>
+    
+    <div class="hero-content">
+      <div class="monogram">Shirlei & Motta</div>
+      
+      <div class="headline">
+        Convidam você para celebrar o início de uma nova jornada
+        <div class="decorative-line"></div>
+      </div>
+      
+      <div class="date-badge">
+        <i class="fas fa-calendar-day"></i> 15 de Novembro de 2025
+      </div>
+    </div>
+  </section>
+  
+  <!-- Seção de Navegação / Etapas -->
+  <div class="step-indicator container">
+    <span class="step-dot active" id="dot-1" onclick="goToStep(1)"></span>
+    <span class="step-dot" id="dot-2" onclick="goToStep(2)"></span>
+    <span class="step-dot" id="dot-3" onclick="goToStep(3)"></span>
+  </div>
+  
+  <!-- Conteúdo Principal -->
+  <div class="page-content">
+    <!-- Step 1: Introdução e Confirmação -->
+    <section id="step1" class="section rsvp-section active">
+      <div class="section-background">
+        <div class="bg-graphic floral-1"></div>
+        <div class="bg-graphic floral-2"></div>
+        <div class="bg-graphic rings"></div>
+      </div>
+      
+      <div class="container">
+        <div class="elegant-card reveal-element" data-delay="0.2">
+          <div class="card-icon"><i class="fas fa-envelope-open-heart"></i></div>
+          <h2>Confirmação de Presença</h2>
+          <p>Sua presença é o nosso maior presente. Por favor, confirme se poderá compartilhar este momento especial conosco.</p>
+          
+          <div class="cinematic-countdown">
+            <h3>Nosso casamento será em:</h3>
+            <div class="countdown-digits">
+              <div class="digit-card">
+                <div class="digit days">000</div>
+                <span>Dias</span>
+              </div>
+              <div class="digit-card">
+                <div class="digit hours">00</div>
+                <span>Horas</span>
+              </div>
+              <div class="digit-card">
+                <div class="digit minutes">00</div>
+                <span>Minutos</span>
+              </div>
+              <div class="digit-card">
+                <div class="digit seconds">00</div>
+                <span>Segundos</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="text-center">
+            <button class="btn btn-primary btn-icon" onclick="goToStep(2)">
+              Confirmar Presença <i class="fas fa-check"></i>
+            </button>
+            <button class="btn btn-map btn-icon" onclick="window.open('https://www.google.com/search?q=artsul+eventos&rlz=1C1VDKB_enBR1155BR1155&oq=artsul&gs_lcrp=EgZjaHJvbWUqCggAEAAY4wIYgAQyCggAEAAY4wIYgAQyDQgBEC4YrwEYxwEYgAQyBwgCEC4YgAQyDQgDEC4YrwEYxwEYgAQyFggEEC4YrwEYxwEYiwMYpgMYqAMYgAQyCggFEAAYiwMYgAQyCggGEAAYiwMYgAQyBwgHEAAYgAQyCggIEAAYiwMYgATSAQgxMDg4ajFqN6gCALACAA&sourceid=chrome&ie=UTF-8', '_blank')">
+              <i class="fas fa-map-marker-alt"></i> Ver local da cerimônia
+            </button>
+          </div>
+        </div>
+        
+        <div class="elegant-divider">
+          <i class="fas fa-heart"></i>
+        </div>
+        
+        <div class="elegant-card reveal-element" data-delay="0.4">
+          <div class="card-icon"><i class="fas fa-gifts"></i></div>
+          <h2>Lista de Presentes</h2>
+          <p>Se você quiser nos presentear com uma contribuição, aqui está nosso Pix:</p>
+          
+          <div style="text-align: center; margin: 40px auto;">
+            <div style="display: inline-block; width: 100%; margin-bottom: 30px; position: relative;">
+              <div style="
+                max-width: 500px; 
+                margin: 0 auto;
+                padding: 25px;
+                background-color: var(--color-background-alt);
+                border-radius: 12px;
+                box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+                border: 1px solid rgba(121, 30, 30, 0.1);
+                position: relative;
+              ">
+                <img src="images/pixpeta.png.png" alt="QR Code Pix" 
+                     style="width: 100%; 
+                            display: block; 
+                            margin: 0 auto;
+                            border-radius: 4px;">
+                
+                <div style="position: absolute; top: -10px; left: -10px; width: 30px; height: 30px; border-top: 3px solid var(--color-primary); border-left: 3px solid var(--color-primary); border-radius: 8px 0 0 0;"></div>
+                <div style="position: absolute; top: -10px; right: -10px; width: 30px; height: 30px; border-top: 3px solid var(--color-primary); border-right: 3px solid var(--color-primary); border-radius: 0 8px 0 0;"></div>
+                <div style="position: absolute; bottom: -10px; left: -10px; width: 30px; height: 30px; border-bottom: 3px solid var(--color-primary); border-left: 3px solid var(--color-primary); border-radius: 0 0 0 8px;"></div>
+                <div style="position: absolute; bottom: -10px; right: -10px; width: 30px; height: 30px; border-bottom: 3px solid var(--color-primary); border-right: 3px solid var(--color-primary); border-radius: 0 0 8px 0;"></div>
+              </div>
+            </div>
+            
+            <p style="font-size: 1.1rem; margin-bottom: 20px; color: var(--color-text);">
+              Escaneie o código ou copie a chave abaixo
+            </p>
+            
+            <div style="max-width: 500px; margin: 0 auto; 
+                        display: flex; align-items: center; 
+                        background: #f9f9f9; 
+                        padding: 15px; 
+                        border-radius: 8px; 
+                        border: 1px solid rgba(0,0,0,0.1);">
+              <input type="text" id="pixKey" value="00020126330014br.gov.bcb.pix0111041010179645204000053039865802BR5924SHIRLEI ROBERTA DE SOUZA6008BLUMENAU62070503***6304FE37" 
+                     readonly 
+                     style="width: 100%; 
+                            border: none; 
+                            background: transparent; 
+                            font-size: 1rem; 
+                            padding: 8px 0;
+                            margin-right: 10px;">
+              <button onclick="copyPixKey()" 
+                      style="background: var(--color-primary); 
+                            color: white; 
+                            border: none; 
+                            border-radius: 4px; 
+                            padding: 8px 12px; 
+                            cursor: pointer;">
+                <i class="fas fa-copy"></i> Copiar
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="elegant-divider">
+          <i class="fas fa-heart"></i>
+        </div>
+        
+        <div class="elegant-card">
+          <div class="card-icon"><i class="fas fa-camera"></i></div>
+          <h2>Nossa História</h2>
+          <p>Compartilhamos alguns momentos especiais da nossa jornada até aqui.</p>
+          
+          <!-- Botão para mostrar a história ANTES das fotos -->
+          <div class="text-center" style="margin: 30px 0;">
+            <button class="btn btn-secondary btn-icon" onclick="toggleStory()">
+              <i class="fas fa-book-heart"></i> <span id="storyBtnText">Conheça Nossa História de Amor</span>
+            </button>
+          </div>
+
+          <!-- Conteúdo da história (inicialmente escondido) -->
+          <div class="story-content" id="storyContent">
+            <div class="story-text">
+              <p>Onde tudo começou e onde tudo chegou!</p>
+              
+              <p>Esse é um resumo da nossa linda história de amor...</p>
+              <p>Tudo começou a mais ou menos 20 anos atrás com uma linda amizade...</p>
+              <p>Nossos melhores momentos eram rir, brincar, compartilhar momentos e um carinho imensurável...</p>
+              <p>Anos se passaram e o destino até tentou nos separar...</p>
+              <p>Um certo dia eu Shirlei decidi vir embora para EUA...</p>
+              <p>Lembro que o Motta foi até na minha casa sentou comigo no sofá e pediu pra mim Não vai embora, mas eu falei sim preciso mudar minha vida, e ali foi nosso último encontro...</p>
+              <p>10 anos se passaram, desde aquele último encontro...</p>
+              <p>Então Shirlei decidiu fazer sua festa de aniversário no Brasil, e do nada encontrou Motta nas redes sociais e ali seguiram uma conversa...</p>
+              <p>Shirlei convidou Motta para seu aniversário e ele aceitou...</p>
+              <p>E dali em diante todas recordações, lembranças daquele passado que talvez nunca seria mais vivido começou a nascer.</p>
+              <p>Daquele momento em diante não tinha mais distância que segurasse nossa saudade e a vontade de viver um ao lado do outro...</p>
+              <p>Deus nos uniu, e nos colocou frente a frente depois de tantos anos para darmos continuidade a nossa antiga história de amor...</p>
+              <p>Com a benção e um empurrãozinho de Deus vamos viver esse amor que já estava traçado e escrito por Deus desde o primeiro dia que nós nos conhecemos...</p>
+              <p>A sorte nos trouxe pra perto um do outro. Destino nos uniu no tempo certo. E Deus nos fez de dois um só...</p>
+              <p>Alguns acreditam em destino. Outros em sorte. Eu acredito em Deus, pois o que Ele uniu, ninguém conseguirá jamais vai separar.</p>
+            </div>
+
+            <!-- Fotos da história com efeitos -->
+            <div class="story-photos">
+              <div class="story-photo" id="photo1">
+                <img src="images/foto3.png.jpg" alt="Nosso Momento Especial - Estátua da Liberdade" />
+              </div>
+              
+
+            </div>
+          </div>
+          
+          <!-- Container com as 3 fotos originais em layout vertical -->
+          <div style="max-width: 600px; margin: 30px auto;">
+
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Step 2: Formulário de RSVP -->
+    <section id="step2" class="section rsvp-section" style="display: none;">
+      <div class="container">
+        <h2>Confirmação de Presença</h2>
+        <p style="text-align: center; max-width: 700px; margin: 0 auto 40px;">Por favor, preencha os dados abaixo para confirmar sua presença em nosso casamento.</p>
+        
+        <div style="max-width: 600px; margin: 40px auto; background: white; padding: 30px; border-radius: 12px; box-shadow: var(--shadow-md);">
+          <form id="rsvpForm">
+            <div style="margin-bottom: 20px;">
+              <label for="guestName" style="display: block; margin-bottom: 8px; color: var(--color-text-light);">Seu Nome Completo</label>
+              <input type="text" id="guestName" required style="width: 100%; padding: 12px; border: 1px solid rgba(0,0,0,0.1); border-radius: 8px;">
+            </div>
+            
+            <div style="margin-bottom: 20px;">
+              <label style="display: block; margin-bottom: 8px; color: var(--color-text-light);">Número de Convidados</label>
+              <div style="display: flex; border: 1px solid rgba(0,0,0,0.1); border-radius: 8px; overflow: hidden;">
+                <button type="button" onclick="decrementGuests()" style="width: 40px; background: #f5f5f5; border: none; cursor: pointer;">-</button>
+                <input type="number" id="guestCount" value="1" min="1" max="10" readonly style="flex: 1; text-align: center; border: none; padding: 12px;">
+                <button type="button" onclick="incrementGuests()" style="width: 40px; background: #f5f5f5; border: none; cursor: pointer;">+</button>
+              </div>
+            </div>
+            
+            <div id="additionalGuests" style="margin-bottom: 20px;"></div>
+            
+            <div style="margin-bottom: 20px;">
+              <label for="dietaryRestrictions" style="display: block; margin-bottom: 8px; color: var(--color-text-light);">Restrições Alimentares ou Observações</label>
+              <textarea id="dietaryRestrictions" rows="3" style="width: 100%; padding: 12px; border: 1px solid rgba(0,0,0,0.1); border-radius: 8px;"></textarea>
+            </div>
+            
+            <div style="margin-bottom: 30px;">
+              <label style="display: flex; align-items: center; cursor: pointer;">
+                <input type="checkbox" id="needsTransport" style="margin-right: 10px;">
+                <span>Preciso de informações sobre hospedagem/transporte</span>
+              </label>
+            </div>
+            
+            <button type="button" onclick="submitRSVP()" class="btn btn-primary" style="width: 100%;">Confirmar Presença</button>
+            
+            <div id="confirmationSuccess" style="display: none; text-align: center; margin-top: 30px; color: #2ecc71;">
+              <i class="fas fa-check-circle" style="font-size: 3rem; margin-bottom: 15px;"></i>
+              <p style="font-weight: 500;">Sua presença foi confirmada com sucesso!</p>
+              <p>Estamos muito felizes em contar com você neste dia tão especial.</p>
+            </div>
+          </form>
+          
+          <div style="text-align: center; margin-top: 20px;">
+            <button class="btn btn-outline" onclick="goToStep(1)">
+              <i class="fas fa-arrow-left"></i> Voltar
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Step 3: Mapa e Informações -->
+    <section id="step3" class="section" style="display: none;">
+      <div class="container">
+        <h2>Localização & Informações</h2>
+        <p>Confira todos os detalhes importantes para o nosso grande dia.</p>
+        
+        <div style="position: relative; height: 400px; margin: 40px 0; border-radius: 12px; overflow: hidden; box-shadow: var(--shadow-md); border: 10px solid white;">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d224536.91290636593!2d-49.11548233021584!3d-26.919125139462354!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94df1e408b5c3095%3A0xacfb8a602f145207!2sBlumenau%2C%20SC!5e0!3m2!1spt-BR!2sbr!4v1650233676253!5m2!1spt-BR!2sbr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+          
+          <div style="position: absolute; top: 0; right: 0; width: 300px; height: 100%; background: rgba(255,255,255,0.95); display: flex; align-items: center; z-index: 10; padding: 20px;">
+            <div style="width: 100%; text-align: center;">
+              <h3 style="font-size: 1.8rem; margin-bottom: 10px;">Onde & Quando</h3>
+              <p style="font-size: 1.1rem; margin-bottom: 15px;">15 de Novembro de 2025 • 18:00</p>
+              <div style="font-style: normal; color: var(--color-text-light); line-height: 1.6; margin-bottom: 20px;">
+                ArtSul Eventos<br>
+                Rua das Flores, 123<br>
+                Blumenau - SC
+              </div>
+              
+              <a href="https://maps.app.goo.gl/o7k9dKkDdHZAz7nV7" target="_blank" class="btn btn-map btn-icon" style="width: auto;">
+                <i class="fas fa-directions"></i> Como Chegar
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="elegant-divider">
+          <i class="fas fa-heart"></i>
+        </div>
+        
+        <h3>Cronograma do Dia</h3>
+        
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-time">17:30</div>
+              <h4>Recepção dos Convidados</h4>
+              <p>Sejam bem-vindos! Aproveite o welcome drink enquanto aguarda o início da cerimônia.</p>
+            </div>
+          </div>
+          
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-time">18:00</div>
+              <h4>Cerimônia</h4>
+              <p>O momento especial da troca de votos e alianças.</p>
+            </div>
+          </div>
+          
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-time">19:30</div>
+              <h4>Coquetel e Jantar</h4>
+              <p>Deliciosas opções gastronômicas para celebrar.</p>
+            </div>
+          </div>
+          
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-time">21:00</div>
+              <h4>Festa com Música ao Vivo</h4>
+              <p>Dance e celebre conosco até o amanhecer.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 40px;">
+          <button class="btn btn-primary" onclick="goToStep(1)">
+            <i class="fas fa-arrow-left"></i> Voltar ao Início
+          </button>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  <!-- Footer -->
+  <footer class="footer" style="margin-top: 60px;">
+    <div class="container">
+      <div class="footer-monogram">S & M</div>
+      <p class="footer-text">Agradecemos de coração por fazer parte deste momento tão especial em nossas vidas.</p>
+      
+      <div class="footer-divider"></div>
+      
+      <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 40px; margin-bottom: 30px;">
+        <div style="text-align: center;">
+          <i class="fas fa-calendar-day" style="font-size: 1.5rem; color: var(--color-secondary); margin-bottom: 10px;"></i>
+          <div style="font-size: 0.8rem; color: rgba(255,255,255,0.6); margin-bottom: 5px;">Data</div>
+          <div style="font-family: var(--font-primary); font-size: 1.1rem;">15 de Novembro de 2025</div>
+        </div>
+        
+        <div style="text-align: center;">
+          <i class="fas fa-clock" style="font-size: 1.5rem; color: var(--color-secondary); margin-bottom: 10px;"></i>
+          <div style="font-size: 0.8rem; color: rgba(255,255,255,0.6); margin-bottom: 5px;">Horário</div>
+          <div style="font-family: var(--font-primary); font-size: 1.1rem;">18:00</div>
+        </div>
+        
+        <div style="text-align: center;">
+          <i class="fas fa-map-marker-alt" style="font-size: 1.5rem; color: var(--color-secondary); margin-bottom: 10px;"></i>
+          <div style="font-size: 0.8rem; color: rgba(255,255,255,0.6); margin-bottom: 5px;">Local</div>
+          <div style="font-family: var(--font-primary); font-size: 1.1rem;">ArtSul Eventos - Blumenau</div>
+        </div>
+      </div>
+      
+      <div class="copyright">
+        Shirlei & Motta © 2025 - Todos os direitos reservados
+      </div>
+    </div>
+  </footer>
+  
+  <!-- Notificações Toast -->
+  <div id="toastContainer" style="position: fixed; bottom: 20px; left: 20px; z-index: 9999;"></div>
+  
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+  
+  <script>
+    // Variáveis globais
+    let currentStep = 1;
+    
+    // Inicialização ao carregar a página
+    document.addEventListener('DOMContentLoaded', function() {
+      initCountdown();
+      initParticles();
+      animateElements();
+      updateAdditionalGuestFields();
+    });
+    
+    // Inicializar contador regressivo
+    function initCountdown() {
+      const weddingDate = new Date("2025-11-15T18:00:00").getTime();
+      
+      function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = weddingDate - now;
+        
+        if (distance < 0) {
+          document.querySelector('.days').innerText = "000";
+          document.querySelector('.hours').innerText = "00";
+          document.querySelector('.minutes').innerText = "00";
+          document.querySelector('.seconds').innerText = "00";
+          clearInterval(countdownInterval);
+          return;
+        }
+        
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        
+        updateDigit('.days', days.toString().padStart(3, '0'));
+        updateDigit('.hours', hours.toString().padStart(2, '0'));
+        updateDigit('.minutes', minutes.toString().padStart(2, '0'));
+        updateDigit('.seconds', seconds.toString().padStart(2, '0'));
+      }
+      
+      function updateDigit(selector, newValue) {
+        const digitElement = document.querySelector(selector);
+        const currentValue = digitElement.innerText;
+        
+        if (currentValue !== newValue) {
+          digitElement.classList.add('flip');
+          
+          setTimeout(() => {
+            digitElement.innerText = newValue;
+          }, 300);
+          
+          setTimeout(() => {
+            digitElement.classList.remove('flip');
+          }, 600);
+        }
+      }
+      
+      updateCountdown();
+      const countdownInterval = setInterval(updateCountdown, 1000);
+    }
+    
+    // Inicializar partículas
+    function initParticles() {
+      if (typeof particlesJS !== 'undefined') {
+        particlesJS("hero-particles", {
+          particles: {
+            number: { value: 80, density: { enable: true, value_area: 800 } },
+            color: { value: "#d4af37" },
+            shape: { type: "circle" },
+            opacity: { value: 0.4, random: true },
+            size: { value: 3, random: true },
+            line_linked: { enable: true, distance: 150, color: "#d4af37", opacity: 0.2, width: 1 },
+            move: { enable: true, speed: 2, direction: "none", random: true, straight: false, out_mode: "out" }
+          },
+          interactivity: {
+            detect_on: "canvas",
+            events: {
+              onhover: { enable: true, mode: "bubble" },
+              onclick: { enable: true, mode: "push" }
+            },
+            modes: {
+              bubble: { distance: 250, size: 6, duration: 2, opacity: 0.8, speed: 3 },
+              push: { particles_nb: 4 }
+            }
+          }
+        });
+      }
+    }
+    
+    // Animação de elementos
+    function animateElements() {
+      document.querySelectorAll('.reveal-element').forEach(el => {
+        el.classList.add('revealed');
+      });
+    }
+    
+    // Navegar entre as etapas
+    function goToStep(step) {
+      document.querySelectorAll('.page-content > section').forEach(section => {
+        section.style.display = 'none';
+      });
+      
+      document.getElementById(`step${step}`).style.display = 'block';
+      
+      document.querySelectorAll('.step-dot').forEach(dot => {
+        dot.classList.remove('active');
+      });
+      document.getElementById(`dot-${step}`).classList.add('active');
+      
+      window.scrollTo({top: 0, behavior: 'smooth'});
+      currentStep = step;
+    }
+
+    // Função para mostrar/esconder a história
+    function toggleStory() {
+      const storyContent = document.getElementById('storyContent');
+      const btnText = document.getElementById('storyBtnText');
+      const photo1 = document.getElementById('photo1');
+      const photo2 = document.getElementById('photo2');
+      
+      if (storyContent.style.display === 'none' || storyContent.style.display === '') {
+        storyContent.style.display = 'block';
+        btnText.textContent = 'Esconder História';
+        
+        // Adicionar classe show após um pequeno delay
+        setTimeout(() => {
+          storyContent.classList.add('show');
+          
+          // Mostrar as fotos com delay após o texto
+          setTimeout(() => {
+            photo1.classList.add('show');
+          }, 1800);
+          
+          setTimeout(() => {
+            photo2.classList.add('show');
+          }, 2000);
+        }, 100);
+        
+      } else {
+        storyContent.classList.remove('show');
+        photo1.classList.remove('show');
+        photo2.classList.remove('show');
+        btnText.textContent = 'Conheça Nossa História de Amor';
+        
+        // Esconder o conteúdo após a animação
+        setTimeout(() => {
+          storyContent.style.display = 'none';
+        }, 800);
+      }
+    }
+    
+    // Função para copiar chave Pix
+    function copyPixKey() {
+      const pixKey = document.getElementById('pixKey').value;
+      
+      navigator.clipboard.writeText(pixKey)
+        .then(() => {
+          showToast('Chave Pix copiada com sucesso!');
+        })
+        .catch(err => {
+          showToast('Não foi possível copiar. Por favor, selecione e copie manualmente.', 'error');
+        });
+    }
+    
+    // Mostrar notificação toast
+    function showToast(message, type = 'success') {
+      const container = document.getElementById('toastContainer');
+      const toast = document.createElement('div');
+      
+      toast.style.padding = '12px 20px';
+      toast.style.background = 'white';
+      toast.style.borderRadius = '8px';
+      toast.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
+      toast.style.marginBottom = '10px';
+      toast.style.display = 'flex';
+      toast.style.alignItems = 'center';
+      toast.style.transform = 'translateX(-150%)';
+      toast.style.transition = 'transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+      toast.style.borderLeft = `4px solid ${type === 'success' ? '#2ecc71' : '#d64541'}`;
+      toast.style.maxWidth = '300px';
+      
+      toast.innerHTML = `
+        <div style="margin-right: 12px; font-size: 1.2rem; color: ${type === 'success' ? '#2ecc71' : '#d64541'}">
+          <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
+        </div>
+        <div style="font-size: 0.9rem;">${message}</div>
+      `;
+      
+      container.appendChild(toast);
+      
+      // Mostrar o toast com pequeno delay para o efeito de animação
+      setTimeout(() => {
+        toast.style.transform = 'translateX(0)';
+      }, 10);
+      
+      // Remover o toast após 3 segundos
+      setTimeout(() => {
+        toast.style.transform = 'translateX(-150%)';
+        
+        setTimeout(() => {
+          container.removeChild(toast);
+        }, 600);
+      }, 3000);
+    }
+    
+    // Incrementar contador de convidados
+    function incrementGuests() {
+      const input = document.getElementById('guestCount');
+      const currentValue = parseInt(input.value);
+      if (currentValue < 10) {
+        input.value = currentValue + 1;
+        updateAdditionalGuestFields();
+      }
+    }
+
+    // Decrementar contador de convidados
+    function decrementGuests() {
+      const input = document.getElementById('guestCount');
+      const currentValue = parseInt(input.value);
+      if (currentValue > 1) {
+        input.value = currentValue - 1;
+        updateAdditionalGuestFields();
+      }
+    }
+
+    // Atualizar campos de convidados adicionais
+    function updateAdditionalGuestFields() {
+      const container = document.getElementById('additionalGuests');
+      const guestCount = parseInt(document.getElementById('guestCount').value);
+      
+      // Limpar container
+      container.innerHTML = '';
+      
+      // Adicionar campos para convidados adicionais (a partir do 2º)
+      for (let i = 2; i <= guestCount; i++) {
+        const guestField = document.createElement('div');
+        guestField.style.marginBottom = '15px';
+        guestField.innerHTML = `
+          <label for="additionalGuest${i}" style="display: block; margin-bottom: 8px; color: var(--color-text-light);">Nome do Acompanhante ${i-1}</label>
+          <input type="text" id="additionalGuest${i}" style="width: 100%; padding: 12px; border: 1px solid rgba(0,0,0,0.1); border-radius: 8px;">
+        `;
+        container.appendChild(guestField);
+      }
+    }
+
+    // Função modificada submitRSVP para incluir os nomes dos acompanhantes
+    function submitRSVP() {
+      // Validar formulário
+      const nameInput = document.getElementById('guestName');
+      if (!nameInput.value.trim()) {
+        showToast('Por favor, preencha seu nome.', 'error');
+        return;
+      }
+      
+      // Coletar informações dos acompanhantes
+      const guestCount = parseInt(document.getElementById('guestCount').value);
+      let accompanimentNames = [];
+      
+      for (let i = 2; i <= guestCount; i++) {
+        const field = document.getElementById(`additionalGuest${i}`);
+        if (field && field.value.trim()) {
+          accompanimentNames.push(field.value.trim());
+        } else if (field) {
+          showToast(`Por favor, preencha o nome do acompanhante ${i-1}.`, 'error');
+          return;
+        }
+      }
+      
+      // Preparar dados para WhatsApp
+      const name = nameInput.value;
+      const dietary = document.getElementById('dietaryRestrictions').value;
+      const needsTransport = document.getElementById('needsTransport').checked;
+      
+      let accompanimentText = '';
+      if (accompanimentNames.length > 0) {
+        accompanimentText = '\nAcompanhantes:\n' + accompanimentNames.map((name, index) => `${index + 1}. ${name}`).join('\n');
+      }
+      
+      const message = encodeURIComponent(
+        `*Confirmação de Presença - Casamento Shirlei & Motta*\n\n` +
+        `Nome: ${name}\n` +
+        `Número de convidados: ${guestCount}${accompanimentText}\n` +
+        (dietary ? `Restrições/Observações: ${dietary}\n` : '') +
+        (needsTransport ? `Preciso de informações sobre hospedagem/transporte.` : '')
+      );
+      
+      // Abrir WhatsApp IMEDIATAMENTE sem delay
+      const whatsappNumber = '5547991395651';
+      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
+      
+      // Tentar abrir diretamente
+      window.location.href = whatsappUrl;
+      
+      // Mostrar mensagem de sucesso após tentar abrir WhatsApp
+      setTimeout(() => {
+        document.getElementById('confirmationSuccess').style.display = 'block';
+      }, 1000);
+    }
+  </script>
+</body>
+</html>
