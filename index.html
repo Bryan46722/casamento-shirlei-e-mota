@@ -1188,7 +1188,9 @@
 
             <!-- Fotos da história com efeitos -->
             <div class="story-photos">
-
+              <div class="story-photo" id="photo1">
+                <img src="images/foto3.png.jpg" alt="Nosso Momento Especial - Estátua da Liberdade" />
+              </div>
               
               <div class="story-photo" id="photo2">
                 <img src="images/foto4.png.jpg" alt="Nosso Momento Especial - Juntos em Nova York" />
@@ -1198,7 +1200,10 @@
           
           <!-- Container com as 3 fotos originais em layout vertical -->
           <div style="max-width: 600px; margin: 30px auto;">
-
+            <div style="margin-bottom: 15px;">
+              <img src="images/foto5.png.jpg" alt="Momento Especial" 
+                   style="width: 100%; border-radius: 12px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); display: block;">
+            </div>
           </div>
         </div>
       </div>
@@ -1667,12 +1672,33 @@
           (needsTransport ? `Preciso de informações sobre hospedagem/transporte.` : '')
         );
         
-        // Link corrigido para WhatsApp que funciona em desktop e mobile
-        const whatsappNumber = '12392462144'; // Número dos EUA: +1 + 12392462144
-        const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
+        // Múltiplas tentativas para abrir WhatsApp no mobile
+        const whatsappNumber = '112392462144';
         
-        // Usar window.location.href para melhor compatibilidade mobile
-        window.location.href = whatsappUrl;
+        // Criar elemento link temporário e forçar clique
+        const link = document.createElement('a');
+        link.href = `https://wa.me/${whatsappNumber}?text=${message}`;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        
+        // Adicionar ao DOM temporariamente
+        document.body.appendChild(link);
+        
+        // Forçar clique
+        link.click();
+        
+        // Remover do DOM
+        document.body.removeChild(link);
+        
+        // Fallback: tentar window.open também
+        setTimeout(() => {
+          try {
+            window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+          } catch(e) {
+            // Se falhar, mostrar alerta com o número
+            alert(`Por favor, envie sua confirmação para o WhatsApp: +1 (239) 246-2144\n\nMensagem:\n${decodeURIComponent(message)}`);
+          }
+        }, 500);
       }, 2000);
     }
   </script>
