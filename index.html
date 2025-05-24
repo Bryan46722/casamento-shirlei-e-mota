@@ -28,7 +28,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Shirlei & Motta - Nosso Casamento</title>
   <!-- Fontes -->
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Great+Vibes&family=Dancing+Script:wght@400;500;600;700&family=Allura&family=Alex+Brush&family=Satisfy&display=swap" rel="stylesheet">
   <!-- Ícones -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <!-- Estilos de bibliotecas -->
@@ -339,17 +339,15 @@
     }
     
     .monogram {
-      font-family: var(--font-script);
+      font-family: 'Great Vibes', cursive;
       font-size: 5.5rem;
-      background: linear-gradient(45deg, var(--color-primary), var(--color-primary-dark));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+      color: var(--color-primary);
       line-height: 1;
       margin-bottom: var(--spacing-md);
       opacity: 0;
       animation: fadeUp 1.2s ease-out forwards 0.8s;
-      text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+      font-weight: 400;
     }
     
     .monogram::after {
@@ -747,6 +745,140 @@
       color: rgba(255, 255, 255, 0.8);
       text-align: left;
     }
+
+    /* Estilos para a história do casal */
+    .story-content {
+      display: none;
+      margin-top: 30px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s ease;
+    }
+
+    .story-content.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .story-text {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--color-text);
+      text-align: left;
+      padding: 30px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(250,247,242,0.9));
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      border: 1px solid rgba(121, 30, 30, 0.1);
+      margin-bottom: 30px;
+      backdrop-filter: blur(10px);
+    }
+
+    .story-text p {
+      margin-bottom: 15px;
+      text-align: left;
+      opacity: 0;
+      transform: translateX(-20px);
+      animation: fadeInLeft 0.6s ease forwards;
+    }
+
+    .story-text p:nth-child(1) { animation-delay: 0.1s; }
+    .story-text p:nth-child(2) { animation-delay: 0.2s; }
+    .story-text p:nth-child(3) { animation-delay: 0.3s; }
+    .story-text p:nth-child(4) { animation-delay: 0.4s; }
+    .story-text p:nth-child(5) { animation-delay: 0.5s; }
+    .story-text p:nth-child(6) { animation-delay: 0.6s; }
+    .story-text p:nth-child(7) { animation-delay: 0.7s; }
+    .story-text p:nth-child(8) { animation-delay: 0.8s; }
+    .story-text p:nth-child(9) { animation-delay: 0.9s; }
+    .story-text p:nth-child(10) { animation-delay: 1.0s; }
+    .story-text p:nth-child(11) { animation-delay: 1.1s; }
+    .story-text p:nth-child(12) { animation-delay: 1.2s; }
+    .story-text p:nth-child(13) { animation-delay: 1.3s; }
+    .story-text p:nth-child(14) { animation-delay: 1.4s; }
+    .story-text p:nth-child(15) { animation-delay: 1.5s; }
+
+    @keyframes fadeInLeft {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .story-text p:first-child {
+      font-weight: bold;
+      color: var(--color-primary);
+      text-align: center;
+      font-size: 1.3rem;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid rgba(121, 30, 30, 0.2);
+    }
+
+    .story-text p:last-child {
+      font-style: italic;
+      color: var(--color-primary-dark);
+      text-align: center;
+      font-size: 1.1rem;
+      margin-top: 25px;
+      padding-top: 20px;
+      border-top: 2px solid rgba(121, 30, 30, 0.2);
+      font-weight: 500;
+    }
+
+    /* Estilos para as fotos da história */
+    .story-photos {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .story-photo {
+      position: relative;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+      transform: scale(0.9);
+      opacity: 0;
+      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .story-photo.show {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    .story-photo:nth-child(1) { transition-delay: 1.8s; }
+    .story-photo:nth-child(2) { transition-delay: 2.0s; }
+
+    .story-photo img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .story-photo:hover img {
+      transform: scale(1.05);
+    }
+
+    .story-photo::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, rgba(121, 30, 30, 0.1), rgba(212, 175, 55, 0.1));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 1;
+    }
+
+    .story-photo:hover::before {
+      opacity: 1;
+    }
     
     /* Cronograma */
     .timeline {
@@ -809,7 +941,7 @@
     }
     
     .footer-monogram {
-      font-family: var(--font-script);
+      font-family: 'Great Vibes', cursive;
       font-size: 3rem;
       margin-bottom: 10px;
     }
@@ -834,47 +966,46 @@
     }
     
     /* Responsividade */
-    /* Melhorias para exibição em dispositivos móveis */
-@media (max-width: 768px) {
-  .countdown-digits {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-    max-width: 300px;
-    margin: 20px auto;
-  }
-  
-  .digit-card {
-    width: 100%;
-    height: auto;
-    padding: 10px 0;
-    min-height: 90px;
-  }
-  
-  .digit {
-    font-size: 2.5rem;
-  }
-  
-  .digit-card span {
-    font-size: 0.8rem;
-  }
-}
+    @media (max-width: 768px) {
+      .countdown-digits {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        max-width: 300px;
+        margin: 20px auto;
+      }
+      
+      .digit-card {
+        width: 100%;
+        height: auto;
+        padding: 10px 0;
+        min-height: 90px;
+      }
+      
+      .digit {
+        font-size: 2.5rem;
+      }
+      
+      .digit-card span {
+        font-size: 0.8rem;
+      }
+    }
 
-@media (max-width: 350px) {
-  .countdown-digits {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-  }
-  
-  .digit-card {
-    min-height: 80px;
-    padding: 8px 0;
-  }
-  
-  .digit {
-    font-size: 2rem;
-  }
-}
+    @media (max-width: 350px) {
+      .countdown-digits {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+      
+      .digit-card {
+        min-height: 80px;
+        padding: 8px 0;
+      }
+      
+      .digit {
+        font-size: 2rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -901,7 +1032,6 @@
   <div class="step-indicator container">
     <span class="step-dot active" id="dot-1" onclick="goToStep(1)"></span>
     <span class="step-dot" id="dot-2" onclick="goToStep(2)"></span>
-    <span class="step-dot" id="dot-3" onclick="
     <span class="step-dot" id="dot-3" onclick="goToStep(3)"></span>
   </div>
   
@@ -962,70 +1092,59 @@
           <h2>Lista de Presentes</h2>
           <p>Se você quiser nos presentear com uma contribuição, aqui está nosso Pix:</p>
           
-          <!-- Código atualizado para o QR code muito maior e rosas integradas -->
-<div style="text-align: center; margin: 40px auto;">
-    <!-- Container do QR Code com tamanho bem maior e decoração integrada -->
-    <div style="display: inline-block; width: 100%; margin-bottom: 30px; position: relative;">
-      <!-- Imagem do QR Code em tamanho maior -->
-      <div style="
-        max-width: 500px; 
-        margin: 0 auto;
-        padding: 25px;
-        background-color: var(--color-background-alt);
-        border-radius: 12px;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-        border: 1px solid rgba(121, 30, 30, 0.1);
-        position: relative;
-      ">
-        <!-- As quatro rosas nos cantos são mantidas na imagem original -->
-        <img src="images/pixpeta.png.png" alt="QR Code Pix" 
-             style="width: 100%; 
-                    display: block; 
-                    margin: 0 auto;
-                    border-radius: 4px;">
-        
-        <!-- Bordas decorativas complementares (opcional) -->
-        <div style="position: absolute; top: -10px; left: -10px; width: 30px; height: 30px; border-top: 3px solid var(--color-primary); border-left: 3px solid var(--color-primary); border-radius: 8px 0 0 0;"></div>
-        <div style="position: absolute; top: -10px; right: -10px; width: 30px; height: 30px; border-top: 3px solid var(--color-primary); border-right: 3px solid var(--color-primary); border-radius: 0 8px 0 0;"></div>
-        <div style="position: absolute; bottom: -10px; left: -10px; width: 30px; height: 30px; border-bottom: 3px solid var(--color-primary); border-left: 3px solid var(--color-primary); border-radius: 0 0 0 8px;"></div>
-        <div style="position: absolute; bottom: -10px; right: -10px; width: 30px; height: 30px; border-bottom: 3px solid var(--color-primary); border-right: 3px solid var(--color-primary); border-radius: 0 0 8px 0;"></div>
-      </div>
-    </div>
-    
-    <p style="font-size: 1.1rem; margin-bottom: 20px; color: var(--color-text);">
-      Escaneie o código ou copie a chave abaixo
-    </p>
-    
-    <!-- Campo da chave PIX com tamanho maior -->
-    <div style="max-width: 500px; margin: 0 auto; 
-                display: flex; align-items: center; 
-                background: #f9f9f9; 
-                padding: 15px; 
-                border-radius: 8px; 
-                border: 1px solid rgba(0,0,0,0.1);">
-      <input type="text" id="pixKey" value="00020126330014br.gov.bcb.pix0111041010179645204000053039865802BR5924SHIRLEI ROBERTA DE SOUZA6008BLUMENAU62070503***6304FE37" 
-             readonly 
-             style="width: 100%; 
-                    border: none; 
-                    background: transparent; 
-                    font-size: 1rem; 
-                    padding: 8px 0;
-                    margin-right: 10px;">
-      <button onclick="copyPixKey()" 
-              style="background: var(--color-primary); 
-                    color: white; 
-                    border: none; 
-                    border-radius: 4px; 
-                    padding: 8px 12px; 
-                    cursor: pointer;">
-        <i class="fas fa-copy"></i> Copiar
-      </button>
-    </div>
-  </div>
-          
-          <div class="text-center" style="margin-top: 20px;">
-
-            </button>
+          <div style="text-align: center; margin: 40px auto;">
+            <div style="display: inline-block; width: 100%; margin-bottom: 30px; position: relative;">
+              <div style="
+                max-width: 500px; 
+                margin: 0 auto;
+                padding: 25px;
+                background-color: var(--color-background-alt);
+                border-radius: 12px;
+                box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+                border: 1px solid rgba(121, 30, 30, 0.1);
+                position: relative;
+              ">
+                <img src="images/pixpeta.png.png" alt="QR Code Pix" 
+                     style="width: 100%; 
+                            display: block; 
+                            margin: 0 auto;
+                            border-radius: 4px;">
+                
+                <div style="position: absolute; top: -10px; left: -10px; width: 30px; height: 30px; border-top: 3px solid var(--color-primary); border-left: 3px solid var(--color-primary); border-radius: 8px 0 0 0;"></div>
+                <div style="position: absolute; top: -10px; right: -10px; width: 30px; height: 30px; border-top: 3px solid var(--color-primary); border-right: 3px solid var(--color-primary); border-radius: 0 8px 0 0;"></div>
+                <div style="position: absolute; bottom: -10px; left: -10px; width: 30px; height: 30px; border-bottom: 3px solid var(--color-primary); border-left: 3px solid var(--color-primary); border-radius: 0 0 0 8px;"></div>
+                <div style="position: absolute; bottom: -10px; right: -10px; width: 30px; height: 30px; border-bottom: 3px solid var(--color-primary); border-right: 3px solid var(--color-primary); border-radius: 0 0 8px 0;"></div>
+              </div>
+            </div>
+            
+            <p style="font-size: 1.1rem; margin-bottom: 20px; color: var(--color-text);">
+              Escaneie o código ou copie a chave abaixo
+            </p>
+            
+            <div style="max-width: 500px; margin: 0 auto; 
+                        display: flex; align-items: center; 
+                        background: #f9f9f9; 
+                        padding: 15px; 
+                        border-radius: 8px; 
+                        border: 1px solid rgba(0,0,0,0.1);">
+              <input type="text" id="pixKey" value="00020126330014br.gov.bcb.pix0111041010179645204000053039865802BR5924SHIRLEI ROBERTA DE SOUZA6008BLUMENAU62070503***6304FE37" 
+                     readonly 
+                     style="width: 100%; 
+                            border: none; 
+                            background: transparent; 
+                            font-size: 1rem; 
+                            padding: 8px 0;
+                            margin-right: 10px;">
+              <button onclick="copyPixKey()" 
+                      style="background: var(--color-primary); 
+                            color: white; 
+                            border: none; 
+                            border-radius: 4px; 
+                            padding: 8px 12px; 
+                            cursor: pointer;">
+                <i class="fas fa-copy"></i> Copiar
+              </button>
+            </div>
           </div>
         </div>
         
@@ -1033,91 +1152,110 @@
           <i class="fas fa-heart"></i>
         </div>
         
-        <!-- Solução otimizada para 3 fotos em layout vertical -->
-<div class="elegant-card">
-    <div class="card-icon"><i class="fas fa-camera"></i></div>
-    <h2>Nossa História</h2>
-    <p>Compartilhamos alguns momentos especiais da nossa jornada até aqui.</p>
-    
-    <!-- Container centralizado com 3 fotos em layout vertical -->
-    <div style="max-width: 600px; margin: 30px auto;">
-      <!-- Foto 1 (antiga foto 3) -->
-      <div style="margin-bottom: 15px;">
-        <img src="images/foto3.png.jpg" alt="Momento Especial" 
-             style="width: 100%; border-radius: 12px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); display: block;">
-      </div>
-      
-      <!-- Foto 2 (antiga foto 4) -->
-      <div style="margin-bottom: 15px;">
-        <img src="images/foto4.png.jpg" alt="Momento Especial" 
-             style="width: 100%; border-radius: 12px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); display: block;">
-      </div>
-      
-      <!-- Foto 3 (antiga foto 5) -->
-      <div style="margin-bottom: 15px;">
-        <img src="images/foto5.png.jpg" alt="Momento Especial" 
-             style="width: 100%; border-radius: 12px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); display: block;">
-      </div>
-    </div>
-  </div>
+        <div class="elegant-card">
+          <div class="card-icon"><i class="fas fa-camera"></i></div>
+          <h2>Nossa História</h2>
+          <p>Compartilhamos alguns momentos especiais da nossa jornada até aqui.</p>
+          
+          <!-- Botão para mostrar a história ANTES das fotos -->
+          <div class="text-center" style="margin: 30px 0;">
+            <button class="btn btn-secondary btn-icon" onclick="toggleStory()">
+              <i class="fas fa-book-heart"></i> <span id="storyBtnText">Conheça Nossa História de Amor</span>
+            </button>
+          </div>
+
+          <!-- Conteúdo da história (inicialmente escondido) -->
+          <div class="story-content" id="storyContent">
+            <div class="story-text">
+              <p>Onde tudo começou e onde tudo chegou!</p>
+              
+              <p>Esse é um resumo da nossa linda história de amor...</p>
+              <p>Tudo começou a mais ou menos 20 anos atrás com uma linda amizade...</p>
+              <p>Nossos melhores momentos eram rir, brincar, compartilhar momentos e um carinho imensurável...</p>
+              <p>Anos se passaram e o destino até tentou nos separar...</p>
+              <p>Um certo dia eu Shirlei decidi vir embora para EUA...</p>
+              <p>Lembro que o Motta foi até na minha casa sentou comigo no sofá e pediu pra mim Não vai embora, mas eu falei sim preciso mudar minha vida, e ali foi nosso último encontro...</p>
+              <p>10 anos se passaram, desde aquele último encontro...</p>
+              <p>Então Shirlei decidiu fazer sua festa de aniversário no Brasil, e do nada encontrou Motta nas redes sociais e ali seguiram uma conversa...</p>
+              <p>Shirlei convidou Motta para seu aniversário e ele aceitou...</p>
+              <p>E dali em diante todas recordações, lembranças daquele passado que talvez nunca seria mais vivido começou a nascer.</p>
+              <p>Daquele momento em diante não tinha mais distância que segurasse nossa saudade e a vontade de viver um ao lado do outro...</p>
+              <p>Deus nos uniu, e nos colocou frente a frente depois de tantos anos para darmos continuidade a nossa antiga história de amor...</p>
+              <p>Com a benção e um empurrãozinho de Deus vamos viver esse amor que já estava traçado e escrito por Deus desde o primeiro dia que nós nos conhecemos...</p>
+              <p>A sorte nos trouxe pra perto um do outro. Destino nos uniu no tempo certo. E Deus nos fez de dois um só...</p>
+              <p>Alguns acreditam em destino. Outros em sorte. Eu acredito em Deus, pois o que Ele uniu, ninguém conseguirá jamais vai separar.</p>
+            </div>
+
+            <!-- Fotos da história com efeitos -->
+            <div class="story-photos">
+
+              <div class="story-photo" id="photo2">
+                <img src="images/foto4.png.jpg" alt="Nosso Momento Especial - Juntos em Nova York" />
+              </div>
+            </div>
+          </div>
+          
+          <!-- Container com as 3 fotos originais em layout vertical -->
+          <div style="max-width: 600px; margin: 30px auto;">
+
+          </div>
         </div>
       </div>
     </section>
     
     <!-- Step 2: Formulário de RSVP -->
-<section id="step2" class="section rsvp-section" style="display: none;">
-    <div class="container">
-      <h2>Confirmação de Presença</h2>
-      <p style="text-align: center; max-width: 700px; margin: 0 auto 40px;">Por favor, preencha os dados abaixo para confirmar sua presença em nosso casamento.</p>
-      
-      <div style="max-width: 600px; margin: 40px auto; background: white; padding: 30px; border-radius: 12px; box-shadow: var(--shadow-md);">
-        <form id="rsvpForm">
-          <div style="margin-bottom: 20px;">
-            <label for="guestName" style="display: block; margin-bottom: 8px; color: var(--color-text-light);">Seu Nome Completo</label>
-            <input type="text" id="guestName" required style="width: 100%; padding: 12px; border: 1px solid rgba(0,0,0,0.1); border-radius: 8px;">
-          </div>
-          
-          <div style="margin-bottom: 20px;">
-            <label style="display: block; margin-bottom: 8px; color: var(--color-text-light);">Número de Convidados</label>
-            <div style="display: flex; border: 1px solid rgba(0,0,0,0.1); border-radius: 8px; overflow: hidden;">
-              <button type="button" onclick="decrementGuests()" style="width: 40px; background: #f5f5f5; border: none; cursor: pointer;">-</button>
-              <input type="number" id="guestCount" value="1" min="1" max="10" readonly style="flex: 1; text-align: center; border: none; padding: 12px;">
-              <button type="button" onclick="incrementGuests()" style="width: 40px; background: #f5f5f5; border: none; cursor: pointer;">+</button>
-            </div>
-          </div>
-          
-          <!-- Campos para acompanhantes - será preenchido dinamicamente -->
-          <div id="additionalGuests" style="margin-bottom: 20px;"></div>
-          
-          <div style="margin-bottom: 20px;">
-            <label for="dietaryRestrictions" style="display: block; margin-bottom: 8px; color: var(--color-text-light);">Restrições Alimentares ou Observações</label>
-            <textarea id="dietaryRestrictions" rows="3" style="width: 100%; padding: 12px; border: 1px solid rgba(0,0,0,0.1); border-radius: 8px;"></textarea>
-          </div>
-          
-          <div style="margin-bottom: 30px;">
-            <label style="display: flex; align-items: center; cursor: pointer;">
-              <input type="checkbox" id="needsTransport" style="margin-right: 10px;">
-              <span>Preciso de informações sobre hospedagem/transporte</span>
-            </label>
-          </div>
-          
-          <button type="button" onclick="submitRSVP()" class="btn btn-primary" style="width: 100%;">Confirmar Presença</button>
-          
-          <div id="confirmationSuccess" style="display: none; text-align: center; margin-top: 30px; color: #2ecc71;">
-            <i class="fas fa-check-circle" style="font-size: 3rem; margin-bottom: 15px;"></i>
-            <p style="font-weight: 500;">Sua presença foi confirmada com sucesso!</p>
-            <p>Estamos muito felizes em contar com você neste dia tão especial.</p>
-          </div>
-        </form>
+    <section id="step2" class="section rsvp-section" style="display: none;">
+      <div class="container">
+        <h2>Confirmação de Presença</h2>
+        <p style="text-align: center; max-width: 700px; margin: 0 auto 40px;">Por favor, preencha os dados abaixo para confirmar sua presença em nosso casamento.</p>
         
-        <div style="text-align: center; margin-top: 20px;">
-          <button class="btn btn-outline" onclick="goToStep(1)">
-            <i class="fas fa-arrow-left"></i> Voltar
-          </button>
+        <div style="max-width: 600px; margin: 40px auto; background: white; padding: 30px; border-radius: 12px; box-shadow: var(--shadow-md);">
+          <form id="rsvpForm">
+            <div style="margin-bottom: 20px;">
+              <label for="guestName" style="display: block; margin-bottom: 8px; color: var(--color-text-light);">Seu Nome Completo</label>
+              <input type="text" id="guestName" required style="width: 100%; padding: 12px; border: 1px solid rgba(0,0,0,0.1); border-radius: 8px;">
+            </div>
+            
+            <div style="margin-bottom: 20px;">
+              <label style="display: block; margin-bottom: 8px; color: var(--color-text-light);">Número de Convidados</label>
+              <div style="display: flex; border: 1px solid rgba(0,0,0,0.1); border-radius: 8px; overflow: hidden;">
+                <button type="button" onclick="decrementGuests()" style="width: 40px; background: #f5f5f5; border: none; cursor: pointer;">-</button>
+                <input type="number" id="guestCount" value="1" min="1" max="10" readonly style="flex: 1; text-align: center; border: none; padding: 12px;">
+                <button type="button" onclick="incrementGuests()" style="width: 40px; background: #f5f5f5; border: none; cursor: pointer;">+</button>
+              </div>
+            </div>
+            
+            <div id="additionalGuests" style="margin-bottom: 20px;"></div>
+            
+            <div style="margin-bottom: 20px;">
+              <label for="dietaryRestrictions" style="display: block; margin-bottom: 8px; color: var(--color-text-light);">Restrições Alimentares ou Observações</label>
+              <textarea id="dietaryRestrictions" rows="3" style="width: 100%; padding: 12px; border: 1px solid rgba(0,0,0,0.1); border-radius: 8px;"></textarea>
+            </div>
+            
+            <div style="margin-bottom: 30px;">
+              <label style="display: flex; align-items: center; cursor: pointer;">
+                <input type="checkbox" id="needsTransport" style="margin-right: 10px;">
+                <span>Preciso de informações sobre hospedagem/transporte</span>
+              </label>
+            </div>
+            
+            <button type="button" onclick="submitRSVP()" class="btn btn-primary" style="width: 100%;">Confirmar Presença</button>
+            
+            <div id="confirmationSuccess" style="display: none; text-align: center; margin-top: 30px; color: #2ecc71;">
+              <i class="fas fa-check-circle" style="font-size: 3rem; margin-bottom: 15px;"></i>
+              <p style="font-weight: 500;">Sua presença foi confirmada com sucesso!</p>
+              <p>Estamos muito felizes em contar com você neste dia tão especial.</p>
+            </div>
+          </form>
+          
+          <div style="text-align: center; margin-top: 20px;">
+            <button class="btn btn-outline" onclick="goToStep(1)">
+              <i class="fas fa-arrow-left"></i> Voltar
+            </button>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
     
     <!-- Step 3: Mapa e Informações -->
     <section id="step3" class="section" style="display: none;">
@@ -1131,7 +1269,7 @@
           <div style="position: absolute; top: 0; right: 0; width: 300px; height: 100%; background: rgba(255,255,255,0.95); display: flex; align-items: center; z-index: 10; padding: 20px;">
             <div style="width: 100%; text-align: center;">
               <h3 style="font-size: 1.8rem; margin-bottom: 10px;">Onde & Quando</h3>
-              <p style="font-size: 1.1rem; margin-bottom: 15px;">8 de Novembro de 2025 • 18:00</p>
+              <p style="font-size: 1.1rem; margin-bottom: 15px;">15 de Novembro de 2025 • 18:00</p>
               <div style="font-style: normal; color: var(--color-text-light); line-height: 1.6; margin-bottom: 20px;">
                 ArtSul Eventos<br>
                 Rua das Flores, 123<br>
@@ -1244,14 +1382,10 @@
     
     // Inicialização ao carregar a página
     document.addEventListener('DOMContentLoaded', function() {
-      // Inicializa contador
       initCountdown();
-      
-      // Inicializa partículas
       initParticles();
-      
-      // Animar elementos da página
       animateElements();
+      updateAdditionalGuestFields();
     });
     
     // Inicializar contador regressivo
@@ -1340,25 +1474,57 @@
     
     // Navegar entre as etapas
     function goToStep(step) {
-      // Esconder todas as etapas
       document.querySelectorAll('.page-content > section').forEach(section => {
         section.style.display = 'none';
       });
       
-      // Mostrar a etapa selecionada
       document.getElementById(`step${step}`).style.display = 'block';
       
-      // Atualizar os pontos de navegação
       document.querySelectorAll('.step-dot').forEach(dot => {
         dot.classList.remove('active');
       });
       document.getElementById(`dot-${step}`).classList.add('active');
       
-      // Rolar para o topo da seção
       window.scrollTo({top: 0, behavior: 'smooth'});
-      
-      // Atualizar step atual
       currentStep = step;
+    }
+
+    // Função para mostrar/esconder a história
+    function toggleStory() {
+      const storyContent = document.getElementById('storyContent');
+      const btnText = document.getElementById('storyBtnText');
+      const photo1 = document.getElementById('photo1');
+      const photo2 = document.getElementById('photo2');
+      
+      if (storyContent.style.display === 'none' || storyContent.style.display === '') {
+        storyContent.style.display = 'block';
+        btnText.textContent = 'Esconder História';
+        
+        // Adicionar classe show após um pequeno delay
+        setTimeout(() => {
+          storyContent.classList.add('show');
+          
+          // Mostrar as fotos com delay após o texto
+          setTimeout(() => {
+            photo1.classList.add('show');
+          }, 1800);
+          
+          setTimeout(() => {
+            photo2.classList.add('show');
+          }, 2000);
+        }, 100);
+        
+      } else {
+        storyContent.classList.remove('show');
+        photo1.classList.remove('show');
+        photo2.classList.remove('show');
+        btnText.textContent = 'Conheça Nossa História de Amor';
+        
+        // Esconder o conteúdo após a animação
+        setTimeout(() => {
+          storyContent.style.display = 'none';
+        }, 800);
+      }
     }
     
     // Função para copiar chave Pix
@@ -1416,120 +1582,97 @@
     }
     
     // Incrementar contador de convidados
-function incrementGuests() {
-  const input = document.getElementById('guestCount');
-  const currentValue = parseInt(input.value);
-  if (currentValue < 10) { // Aumentado para 10
-    input.value = currentValue + 1;
-    updateAdditionalGuestFields();
-  }
-}
-
-// Decrementar contador de convidados
-function decrementGuests() {
-  const input = document.getElementById('guestCount');
-  const currentValue = parseInt(input.value);
-  if (currentValue > 1) {
-    input.value = currentValue - 1;
-    updateAdditionalGuestFields();
-  }
-}
-
-// Atualizar campos de convidados adicionais
-function updateAdditionalGuestFields() {
-  const container = document.getElementById('additionalGuests');
-  const guestCount = parseInt(document.getElementById('guestCount').value);
-  
-  // Limpar container
-  container.innerHTML = '';
-  
-  // Adicionar campos para convidados adicionais (a partir do 2º)
-  for (let i = 2; i <= guestCount; i++) {
-    const guestField = document.createElement('div');
-    guestField.style.marginBottom = '15px';
-    guestField.innerHTML = `
-      <label for="additionalGuest${i}" style="display: block; margin-bottom: 8px; color: var(--color-text-light);">Nome do Acompanhante ${i-1}</label>
-      <input type="text" id="additionalGuest${i}" style="width: 100%; padding: 12px; border: 1px solid rgba(0,0,0,0.1); border-radius: 8px;">
-    `;
-    container.appendChild(guestField);
-  }
-}
-
-// Adicionar no evento onload para inicializar os campos
-document.addEventListener('DOMContentLoaded', function() {
-  // Inicializa contador
-  initCountdown();
-  
-  // Inicializa partículas
-  initParticles();
-  
-  // Animar elementos da página
-  animateElements();
-  
-  // Inicializa campos para acompanhantes
-  updateAdditionalGuestFields();
-  
-  // Adicionar evento para os botões +/- do contador de convidados
-  const plusButton = document.querySelector('button[onclick="incrementGuests()"]');
-  const minusButton = document.querySelector('button[onclick="decrementGuests()"]');
-  
-  if (plusButton) {
-    plusButton.addEventListener('click', updateAdditionalGuestFields);
-  }
-  
-  if (minusButton) {
-    minusButton.addEventListener('click', updateAdditionalGuestFields);
-  }
-});
-
-// Função modificada submitRSVP para incluir os nomes dos acompanhantes
-function submitRSVP() {
-  // Validar formulário
-  const nameInput = document.getElementById('guestName');
-  if (!nameInput.value.trim()) {
-    showToast('Por favor, preencha seu nome.', 'error');
-    return;
-  }
-  
-  // Coletar informações dos acompanhantes
-  const guestCount = parseInt(document.getElementById('guestCount').value);
-  let accompanimentNames = [];
-  
-  for (let i = 2; i <= guestCount; i++) {
-    const field = document.getElementById(`additionalGuest${i}`);
-    if (field && field.value.trim()) {
-      accompanimentNames.push(field.value.trim());
-    } else if (field) {
-      showToast(`Por favor, preencha o nome do acompanhante ${i-1}.`, 'error');
-      return;
+    function incrementGuests() {
+      const input = document.getElementById('guestCount');
+      const currentValue = parseInt(input.value);
+      if (currentValue < 10) {
+        input.value = currentValue + 1;
+        updateAdditionalGuestFields();
+      }
     }
-  }
-  
-  // Mostrar mensagem de sucesso
-  document.getElementById('confirmationSuccess').style.display = 'block';
-  
-  // Redirecionar para WhatsApp após um pequeno delay
-  setTimeout(() => {
-    const name = nameInput.value;
-    const dietary = document.getElementById('dietaryRestrictions').value;
-    const needsTransport = document.getElementById('needsTransport').checked;
-    
-    let accompanimentText = '';
-    if (accompanimentNames.length > 0) {
-      accompanimentText = '\nAcompanhantes:\n' + accompanimentNames.map((name, index) => `${index + 1}. ${name}`).join('\n');
+
+    // Decrementar contador de convidados
+    function decrementGuests() {
+      const input = document.getElementById('guestCount');
+      const currentValue = parseInt(input.value);
+      if (currentValue > 1) {
+        input.value = currentValue - 1;
+        updateAdditionalGuestFields();
+      }
     }
-    
-    const message = encodeURIComponent(
-      `*Confirmação de Presença - Casamento Shirlei & Motta*\n\n` +
-      `Nome: ${name}\n` +
-      `Número de convidados: ${guestCount}${accompanimentText}\n` +
-      (dietary ? `Restrições/Observações: ${dietary}\n` : '') +
-      (needsTransport ? `Preciso de informações sobre hospedagem/transporte.` : '')
-    );
-    
-    window.open(`https://chat.whatsapp.com/Hii7qVEzyt16sITCvlp0Ro${message}`, '_blank');
-  }, 2000);
-}
+
+    // Atualizar campos de convidados adicionais
+    function updateAdditionalGuestFields() {
+      const container = document.getElementById('additionalGuests');
+      const guestCount = parseInt(document.getElementById('guestCount').value);
+      
+      // Limpar container
+      container.innerHTML = '';
+      
+      // Adicionar campos para convidados adicionais (a partir do 2º)
+      for (let i = 2; i <= guestCount; i++) {
+        const guestField = document.createElement('div');
+        guestField.style.marginBottom = '15px';
+        guestField.innerHTML = `
+          <label for="additionalGuest${i}" style="display: block; margin-bottom: 8px; color: var(--color-text-light);">Nome do Acompanhante ${i-1}</label>
+          <input type="text" id="additionalGuest${i}" style="width: 100%; padding: 12px; border: 1px solid rgba(0,0,0,0.1); border-radius: 8px;">
+        `;
+        container.appendChild(guestField);
+      }
+    }
+
+    // Função modificada submitRSVP para incluir os nomes dos acompanhantes
+    function submitRSVP() {
+      // Validar formulário
+      const nameInput = document.getElementById('guestName');
+      if (!nameInput.value.trim()) {
+        showToast('Por favor, preencha seu nome.', 'error');
+        return;
+      }
+      
+      // Coletar informações dos acompanhantes
+      const guestCount = parseInt(document.getElementById('guestCount').value);
+      let accompanimentNames = [];
+      
+      for (let i = 2; i <= guestCount; i++) {
+        const field = document.getElementById(`additionalGuest${i}`);
+        if (field && field.value.trim()) {
+          accompanimentNames.push(field.value.trim());
+        } else if (field) {
+          showToast(`Por favor, preencha o nome do acompanhante ${i-1}.`, 'error');
+          return;
+        }
+      }
+      
+      // Mostrar mensagem de sucesso
+      document.getElementById('confirmationSuccess').style.display = 'block';
+      
+      // Redirecionar para WhatsApp após um pequeno delay
+      setTimeout(() => {
+        const name = nameInput.value;
+        const dietary = document.getElementById('dietaryRestrictions').value;
+        const needsTransport = document.getElementById('needsTransport').checked;
+        
+        let accompanimentText = '';
+        if (accompanimentNames.length > 0) {
+          accompanimentText = '\nAcompanhantes:\n' + accompanimentNames.map((name, index) => `${index + 1}. ${name}`).join('\n');
+        }
+        
+        const message = encodeURIComponent(
+          `*Confirmação de Presença - Casamento Shirlei & Motta*\n\n` +
+          `Nome: ${name}\n` +
+          `Número de convidados: ${guestCount}${accompanimentText}\n` +
+          (dietary ? `Restrições/Observações: ${dietary}\n` : '') +
+          (needsTransport ? `Preciso de informações sobre hospedagem/transporte.` : '')
+        );
+        
+        // Link corrigido para WhatsApp que funciona em desktop e mobile
+        const whatsappNumber = '12392462144'; // Número dos EUA: +1 + 12392462144
+        const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
+        
+        window.open(whatsappUrl, '_blank');
+      }, 2000);
+    }
   </script>
 </body>
 </html>
