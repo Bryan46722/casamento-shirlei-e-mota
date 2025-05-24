@@ -1650,56 +1650,35 @@
         }
       }
       
-      // Mostrar mensagem de sucesso
-      document.getElementById('confirmationSuccess').style.display = 'block';
+      // Preparar dados para WhatsApp
+      const name = nameInput.value;
+      const dietary = document.getElementById('dietaryRestrictions').value;
+      const needsTransport = document.getElementById('needsTransport').checked;
       
-      // Redirecionar para WhatsApp após um pequeno delay
+      let accompanimentText = '';
+      if (accompanimentNames.length > 0) {
+        accompanimentText = '\nAcompanhantes:\n' + accompanimentNames.map((name, index) => `${index + 1}. ${name}`).join('\n');
+      }
+      
+      const message = encodeURIComponent(
+        `*Confirmação de Presença - Casamento Shirlei & Motta*\n\n` +
+        `Nome: ${name}\n` +
+        `Número de convidados: ${guestCount}${accompanimentText}\n` +
+        (dietary ? `Restrições/Observações: ${dietary}\n` : '') +
+        (needsTransport ? `Preciso de informações sobre hospedagem/transporte.` : '')
+      );
+      
+      // Abrir WhatsApp IMEDIATAMENTE sem delay
+      const whatsappNumber = '112392462144';
+      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
+      
+      // Tentar abrir diretamente
+      window.location.href = whatsappUrl;
+      
+      // Mostrar mensagem de sucesso após tentar abrir WhatsApp
       setTimeout(() => {
-        const name = nameInput.value;
-        const dietary = document.getElementById('dietaryRestrictions').value;
-        const needsTransport = document.getElementById('needsTransport').checked;
-        
-        let accompanimentText = '';
-        if (accompanimentNames.length > 0) {
-          accompanimentText = '\nAcompanhantes:\n' + accompanimentNames.map((name, index) => `${index + 1}. ${name}`).join('\n');
-        }
-        
-        const message = encodeURIComponent(
-          `*Confirmação de Presença - Casamento Shirlei & Motta*\n\n` +
-          `Nome: ${name}\n` +
-          `Número de convidados: ${guestCount}${accompanimentText}\n` +
-          (dietary ? `Restrições/Observações: ${dietary}\n` : '') +
-          (needsTransport ? `Preciso de informações sobre hospedagem/transporte.` : '')
-        );
-        
-        // Múltiplas tentativas para abrir WhatsApp no mobile
-        const whatsappNumber = '112392462144';
-        
-        // Criar elemento link temporário e forçar clique
-        const link = document.createElement('a');
-        link.href = `https://wa.me/${whatsappNumber}?text=${message}`;
-        link.target = '_blank';
-        link.rel = 'noopener noreferrer';
-        
-        // Adicionar ao DOM temporariamente
-        document.body.appendChild(link);
-        
-        // Forçar clique
-        link.click();
-        
-        // Remover do DOM
-        document.body.removeChild(link);
-        
-        // Fallback: tentar window.open também
-        setTimeout(() => {
-          try {
-            window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
-          } catch(e) {
-            // Se falhar, mostrar alerta com o número
-            alert(`Por favor, envie sua confirmação para o WhatsApp: +1 (239) 246-2144\n\nMensagem:\n${decodeURIComponent(message)}`);
-          }
-        }, 500);
-      }, 2000);
+        document.getElementById('confirmationSuccess').style.display = 'block';
+      }, 1000);
     }
   </script>
 </body>
